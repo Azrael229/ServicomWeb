@@ -44,7 +44,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="h1-large">Basculas para uso industrial y comercial <br><br> Certificación y Planes de mantenimieto </h1>
+                        <h1 class="h1-large">Basculas para uso industrial y comercial <br><br> Certificación y Planes de mantenimiento </h1>
                         <a class="btn-solid-lg" href="#contact">Cotización</a>
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
@@ -120,15 +120,15 @@
                 <div class="col-lg-10 offset-lg-1">
                     
                     <!-- Contact Form -->
-                    <form>
+                    <form method="POST" action="configuracion/PHPMailer/mail.php">
                         <div class="form-group">
-                            <input type="text" class="form-control-input" placeholder="Nombre" required>
+                            <input type="text" class="form-control-input" placeholder="Nombre" required name="nombre">
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control-input" placeholder="Email" required>
+                            <input type="email" class="form-control-input" placeholder="Email" required name="email">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control-textarea" placeholder="Mensaje" required></textarea>
+                            <textarea class="form-control-textarea" placeholder="Mensaje" required name="mensaje"></textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="form-control-submit-button">Enviar</button>
