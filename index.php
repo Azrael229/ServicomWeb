@@ -101,46 +101,14 @@
     <!-- end of statistics -->
 
 
-    <!-- Contact -->
-    <div id="contact" class="form-1">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="h2-heading">Contacto</h2>
-                    <p class="p-heading">Solicta tu cotizacion, Gracias por comunicarte en breve nos pondremos en contacto</p>
-                    <ul class="list-unstyled li-space-lg">
-                        <li><i class="fas fa-map-marker-alt"></i> &nbsp;Servicom, Querétaro, Qro 76116, MX</li>
-                        <li><i class="fas fa-phone"></i> &nbsp;<a href="tel:4423601166">442 360 11 66</a></li>
-                        <li><i class="fas fa-phone"></i> &nbsp;<a href="tel:4421782616">442 178 26 16</a></li>
-                        <li><i class="fas fa-envelope"></i> &nbsp;<a href="mailto:contacto@servicombasculas.com.mx">contacto@servicombasculas.com.mx</a></li>
-                    </ul>
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1">
-                    
-                    <!-- Contact Form -->
-                    <form method="POST" action="configuracion/PHPMailer/mail.php">
-                        <div class="form-group">
-                            <input type="text" class="form-control-input" placeholder="Nombre" required name="nombre">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control-input" placeholder="Email" required name="email">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control-textarea" placeholder="Mensaje" required name="mensaje"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="form-control-submit-button">Enviar</button>
-                        </div>
-                    </form>
-                    <!-- end of contact form -->
 
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of form-1 -->
+
+    <!-- Contact -->
+    <?php include("estructura/contactform.php"); ?>
+    
     <!-- end of contact -->
+
+
 
 
     <!-- Footer -->
