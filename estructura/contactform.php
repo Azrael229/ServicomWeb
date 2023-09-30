@@ -71,7 +71,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="h2-heading">Contacto</h2>
-                <p class="p-heading">Solicta tu cotizacion, Gracias por comunicarte en breve nos pondremos en contacto</p>
+                <p class="p-heading">Solicta tu cotizacion</p>
                 <ul class="list-unstyled li-space-lg">
                     <li><i class="fas fa-map-marker-alt"></i> &nbsp;Servicom, Querétaro, Qro 76116, MX</li>
                     <li><i class="fas fa-phone"></i> &nbsp;<a href="tel:4423601166">442 360 11 66</a></li>
@@ -81,6 +81,19 @@
             </div> <!-- end of col -->
         </div> <!-- end of row -->
 
+
+        <?php if (isset($mailstats)) { ?>
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?php echo $mailstats; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        <?php } ?><!-- end of row -->
+
+        
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 
@@ -103,18 +116,7 @@
 
             </div> <!-- end of col -->
         </div> <!-- end of row -->
-
-
-        <?php if (isset($mailstats)) { ?>
-            <div class="row py-3">
-                <div class="col-lg-6 col-md-12">
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <?php echo $mailstats; ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                </div>
-            </div>
-        <?php } ?><!-- end of row -->
+        
 
     </div> <!-- end of container -->
 
