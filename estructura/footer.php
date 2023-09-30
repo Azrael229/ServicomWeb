@@ -55,6 +55,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <p class="p-small">Copyright © 2023 <a href="servicombasculas.com.mx">Servicom Basculas Digitales</a></p>
+                    <p class="p-small">servicom Website v.1.1</p>
                 </div> <!-- end of col -->
             </div> <!-- enf of row -->
 
