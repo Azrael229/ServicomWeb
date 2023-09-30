@@ -52,9 +52,9 @@
         </div> <!-- end of header-content -->
         
         <!-- Video Background -->
-        <video autoplay loop muted id="video-background" poster="images/header-background.jpg" playsinline>
+        <!-- <video autoplay loop muted id="video-background" poster="images/header-background.jpg" playsinline>
             <source src="images/header-background-video.mp4" type="video/mp4" />
-        </video>
+        </video> -->
         <!-- end of video background -->
 
     </header> <!-- end of header -->
