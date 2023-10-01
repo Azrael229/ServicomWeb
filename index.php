@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <!-- <h1 class="h1-large">Basculas para uso industrial y comercial <br><br> Certificación <br>Normatividad <br>Legalidad </h1> -->
-                        <h1 class="h1-large">Básculas para uso industrial y comercial, normatividad y servicios de manteniminteo</h1>
+                        <h1 class="h1-large">Básculas para uso industrial y comercial, normatividad y servicios de mantenimiento</h1>
 
                         <a class="btn-solid-lg" href="#contact">Cotización</a>
                     </div> <!-- end of col -->
