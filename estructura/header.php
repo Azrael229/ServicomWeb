@@ -10,7 +10,7 @@
     <meta name="author" content="Servicom Basculas Digitales"/>
     <meta name="keywords" content="Reparación de básculas digitales industriales en Querétaro"/>
     <meta name="robots" content="index, all, follow">
-    <meta name="google-site-verification" content="qzYyxEW184o53C04exFPejsJZmiykHRvIE07tNQHIsA"/>
+    <meta name="google-site-verification" content="qzYyxEW184o53C04exFPejsJZmiykHRvIE07tNQHIsA" />
 
 
     <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
