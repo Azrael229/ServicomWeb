@@ -88,13 +88,34 @@
             </div> <!-- end of row -->
         </div> <!-- end of container -->
     </div> <!-- end of cards-1 -->
-
-
     <!-- end of introduction -->
    
 
 
     <!-- Details -->
+    <div class="split">
+		<div class="area-1">
+		</div><!-- end of area-1 on same line and no space between comments to eliminate margin white space --><div class="area-2 bg-gray">
+            <div class="container">    
+                <div class="row">
+                    <div class="col-lg-12">     
+                        
+                        <!-- Text Container -->
+                        <div class="text-container">
+                            <h2>Optimiza tus Procesos Industriales con Nosotros </h2>
+                            <p>En <strong>SERVICOM Básculas Digitales</strong>, entendemos la importancia de la precisión y la calidad en la industria. Es por eso que ofrecemos servicios especializados en instrumentos de medición sistemas de pesaje que pueden impulsar tu productividad a nuevos niveles.</p>
+                            <p>Nuestro compromiso es brindarte resultados excepcionales y satisfacer tus necesidades específicas. Ya sea que operes en la industria manufacturera, la automotriz, la farmacéutica o cualquier otro sector, nuestros servicios de medición están diseñados para adaptarse a tus requerimientos exactos.</p>
+                            <!-- <p><strong>EXPERIENCE -</strong> insipidity especially discovered me of decisively in surrounded. Points six way enough she its</p>
+                            <p><strong>PASSION -</strong> On recommend tolerably my belonging or am. Mutual has cannot beauty indeed now sussex merely</p>
+                            <p><strong>CREATIVITY -</strong> possible no husbands jennings ye offended packages pleasant he recommend engrossed</p> -->
+                        </div> <!-- end of text-container -->
+                        <!-- end of text container -->
+
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+		</div> <!-- end of area-2 -->
+    </div> <!-- end of split -->
 	
     <!-- end of details -->
 

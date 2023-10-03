@@ -71,7 +71,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="h2-heading">Contacto</h2>
-                <p class="p-heading">Solicta tu cotizacion</p>
+                <p class="p-heading">Completa el formulario a continuación y uno de nuestros especialistas se pondrá en contacto contigo para proporcionarte más información detallada sobre cómo nuestros servicios de medición pueden beneficiar a tu empresa. No pierdas la oportunidad de mejorar la precisión, la calidad y la eficiencia en tu industria. ¡Contáctanos hoy mismo!</p><br>
                 <ul class="list-unstyled li-space-lg">
                     <li><i class="fas fa-map-marker-alt"></i> &nbsp;Servicom, Querétaro, Qro 76116, MX</li>
                     <li><i class="fas fa-phone"></i> &nbsp;<a href="tel:4423601166">442 360 11 66</a></li>
