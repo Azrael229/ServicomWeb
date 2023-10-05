@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="es"/>
 <head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NJ7QR6CGJL"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-NJ7QR6CGJL');
+    </script>
+
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     
     <!-- SEO Meta Tags -->
     <meta name="language" content="spanish"/>
-    <meta name="description" content="Descubre nuestros servicios de reparación, calibración, verificación y venta de básculas industriales de la más alta calidad. Somos tu proveedor confiable en la industria, ofreciendo soluciones precisas y eficientes para mantener tus básculas en óptimas condiciones. ¡Contáctanos hoy para optimizar tu operación y garantizar la precisión en cada pesada!"/>
+    <meta name="description" content="Descubre nuestros servicios de reparación, calibración, verificación y venta de básculas en Querétaro. Somos tu proveedor confiable en la industria, ofreciendo soluciones precisas y eficientes para mantener tus básculas en óptimas condiciones. ¡Contáctanos hoy para optimizar tu operación y garantizar la precisión en cada pesada!"/>
     <meta name="author" content="Servicom Basculas Digitales"/>
-    <meta name="keywords" content="Reparación de básculas digitales industriales en Querétaro"/>
+    <meta name="keywords" content="Básculas Querétaro, Reparación de básculas en Querétaro, Básculas digitales en Querétaro, Básculas industriales en Querétaro, Calibración de básculas en Querétaro, Básculas grameras"/>
     <meta name="robots" content="index, all, follow">
     <meta name="google-site-verification" content="qzYyxEW184o53C04exFPejsJZmiykHRvIE07tNQHIsA" />
 
@@ -23,7 +34,7 @@
 	<!-- <meta name="twitter:card" content="summary_large_image"> to have large image post format in Twitter -->
 
     <!-- Webpage Title -->
-    <title>Básculas Industriales: Reparación, Calibración y Venta | SERVICOM Básculas Digitales</title>
+    <title>Básculas Digitales Querétaro | SERVICOM </title>
     
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
