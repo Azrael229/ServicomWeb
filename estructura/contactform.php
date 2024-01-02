@@ -22,6 +22,7 @@
         $nombre = $_POST["nombre"];
         $email = $_POST["email"];
         $mensaje = $_POST["mensaje"];
+        $telefono = $_POST["telefono"];
 
         
 
@@ -35,12 +36,12 @@
             $mail->Host       = 'mail.servicombasculas.com.mx';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
             $mail->Username   = 'contacto@servicombasculas.com.mx';                     //SMTP username
-            $mail->Password   = '744920lovepass';                               //SMTP password
+            $mail->Password   = '744920Lovepass+';                               //SMTP password
             $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom($email, $nombre);
+            $mail->setFrom($email, $nombre, $telefono);
             $mail->addAddress('contacto@servicombasculas.com.mx', 'servicombasculas.com.mx');     //Add a recipient
             //$mail->addAddress('admonbasculasdigitales@gmail.com', 'servicombasculas.com.mx'); 
             //$mail->addAddress('isarel.navarrete229@gmail.com', 'servicombasculas.com.mx');     //Name is optional
@@ -101,6 +102,9 @@
                 <form method="POST" action="#contact">
                     <div class="form-group">
                         <input type="text" class="form-control-input" placeholder="Nombre" required name="nombre">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control-input" placeholder="Telefono" required name="telefono">
                     </div>
                     <div class="form-group">
                         <input type="email" class="form-control-input" placeholder="Email" required name="email">
