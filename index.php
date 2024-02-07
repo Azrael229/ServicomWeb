@@ -15,7 +15,7 @@
                     <div class="col-lg-12">
                         <!-- <h1 class="h1-large">Basculas para uso industrial y comercial <br><br> Certificación <br>Normatividad <br>Legalidad </h1> -->
                         <h1 class="h1-large">Básculas <font color="F02C02">Digitales</font> en Querétaro</h1>
-                        <h1 class="h1-short">Expertos en asegurar la precisión de tus básculas y balanzas</h1><br>
+                        <h3 class="h1-short">Expertos en asegurar la precisión de tus básculas y balanzas</h3><br>
                         <a class="btn-solid-lg" href="#contact">Cotización</a>
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
