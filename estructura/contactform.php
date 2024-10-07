@@ -13,7 +13,7 @@
         require 'configuracion/PHPMailer/src/Exception.php'; 
         require 'configuracion/PHPMailer/src/PHPMailer.php';
         require 'configuracion/PHPMailer/src/SMTP.php';
-
+        require 'config.php';
 
 
 
@@ -36,12 +36,12 @@
             $mail->Host       = 'mail.servicombasculas.com.mx';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
             $mail->Username   = 'contacto@servicombasculas.com.mx';                     //SMTP username
-            $mail->Password   = '744920Lovepass+';                               //SMTP password
+            $mail->Password   = MAIL_PASSWORD;                               //SMTP password
             $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            $mail->Port       = MAIL_PORT;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom($email, $nombre, $telefono);
+            $mail->setFrom($email, $nombre);
             $mail->addAddress('contacto@servicombasculas.com.mx', 'servicombasculas.com.mx');     //Add a recipient
             //$mail->addAddress('admonbasculasdigitales@gmail.com', 'servicombasculas.com.mx'); 
             //$mail->addAddress('isarel.navarrete229@gmail.com', 'servicombasculas.com.mx');     //Name is optional
@@ -56,7 +56,15 @@
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->Subject = 'Email desde formulario servicombasculas.com.mx';
-            $mail->Body    = ($mensaje);
+            $mail->Body    =
+            "
+            <h2>Nuevo mensaje de contacto</h2>
+            <p><strong>Mensaje:</strong><br>{$mensaje}</p>
+            <p><strong>Nombre:</strong> {$nombre}</p>
+            <p><strong>Correo:</strong> {$email}</p>
+            <p><strong>Teléfono:</strong> {$telefono}</p>
+            ";
+
             $mail ->CharSet = 'utf-8';
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
@@ -105,7 +113,7 @@
                         <input type="text" class="form-control-input" placeholder="Nombre" required name="nombre">
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control-input" placeholder="Telefono" required name="telefono">
+                        <input type="text" class="form-control-input" placeholder="Telefono" required name="telefono">
                     </div>
                     <div class="form-group">
                         <input type="email" class="form-control-input" placeholder="Email" required name="email">

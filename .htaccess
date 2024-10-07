@@ -1,0 +1,14 @@
+# PROTECCIÓN DEL ARCHIVO .HTACCESS
+<Files ".htaccess">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# PROTECCIÓN DEL ARCHIVO config.php
+<Files "config.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+
+
