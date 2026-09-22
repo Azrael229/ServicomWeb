@@ -1,0 +1,9 @@
+# Configuración privada y variables de entorno
+config.local.php
+.env
+.env.*
+!.env.example
+
+# Registros y almacenamiento local
+*.log
+var/

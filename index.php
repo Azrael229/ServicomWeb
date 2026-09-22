@@ -1,4 +1,7 @@
-<?php include("estructura/header.php"); ?>
+<?php
+require __DIR__ . '/estructura/contact_process.php';
+include __DIR__ . '/estructura/header.php';
+?>
 
 <body>
     
