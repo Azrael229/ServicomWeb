@@ -22,13 +22,11 @@ $escapeContact = static fn($value): string => htmlspecialchars((string) $value, 
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="h2-heading">Contacto</h2>
+                <h2 class="h2-heading">Contacto con SERVICOM</h2>
                 <p class="p-heading">Completa el formulario a continuación y uno de nuestros especialistas se pondrá en contacto contigo para proporcionarte más información detallada sobre cómo nuestros servicios de medición pueden beneficiar a tu empresa. No pierdas la oportunidad de mejorar la precisión, la calidad y la eficiencia en tu industria. ¡Contáctanos hoy mismo!</p><br>
                 <ul class="list-unstyled li-space-lg">
-                    <li><i class="fas fa-map-marker-alt"></i> &nbsp;Servicom, Querétaro, Qro 76116, MX</li>
-                    <li><i class="fas fa-phone"></i> &nbsp;<a href="tel:4426099098">442 609 90 98</a></li>
-                    <li><i class="fas fa-phone"></i> &nbsp;<a href="tel:4423601166">442 360 11 66</a></li>
-                    <li><i class="fas fa-phone"></i> &nbsp;<a href="tel:4421782616">442 178 26 16</a></li>
+                    <li><i class="fas fa-map-marker-alt"></i> &nbsp;SERVICOM Básculas Digitales, Querétaro, Qro. 76116, MX</li>
+                    <li><i class="fas fa-phone"></i> &nbsp;<a href="tel:+524428712550" aria-label="Llamar a SERVICOM al 442 871 2550">442 871 2550</a></li>
                     <li><i class="fas fa-envelope"></i> &nbsp;<a href="mailto:contacto@servicombasculas.com.mx">contacto@servicombasculas.com.mx</a></li>
                 </ul>
             </div>

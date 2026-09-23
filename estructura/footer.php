@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer-col first">
-                        <h6>Acerca de Servicom</h6>
+                        <h6>Acerca de SERVICOM</h6>
                         <p class="p-small">Empresa 100% mexicana expertos en la normatividad desde 2018</p>
                     </div> <!-- end of footer-col -->
                     <!-- <div class="footer-col second">
@@ -54,8 +54,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="p-small">Copyright © 2023 <a href="servicombasculas.com.mx">Servicom Basculas Digitales</a></p>
-                    <p class="p-small">servicom Website v.1.1</p>
+                    <p class="p-small">Copyright © 2023 <a href="https://servicombasculas.com.mx/">SERVICOM Básculas Digitales</a></p>
+                    <p class="p-small">SERVICOM Website v.1.1</p>
                 </div> <!-- end of col -->
             </div> <!-- enf of row -->
 

@@ -3,7 +3,7 @@
         <div class="container">
 
             <!-- Image Logo -->
-            <a class="navbar-brand logo-image" href="index.php"><img src="images/LogoMakr_3wOwdM.png" alt="alternative">Basculas Digitales</a> 
+            <a class="navbar-brand logo-image" href="index.php"><img src="images/LogoMakr_3wOwdM.png" alt="SERVICOM Básculas Digitales">Básculas Digitales</a>
 
             <!-- Text Logo - Use this if you don't have a graphic logo -->
             <!-- <a class="navbar-brand logo-text" href="index.html">Desi</a> -->

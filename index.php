@@ -16,10 +16,9 @@ include __DIR__ . '/estructura/header.php';
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <!-- <h1 class="h1-large">Basculas para uso industrial y comercial <br><br> Certificación <br>Normatividad <br>Legalidad </h1> -->
-                        <h1 class="h1-large">Básculas <font color="F02C02">Digitales</font> en Querétaro</h1>
+                        <h1 class="h1-large">Servicio, reparación y calibración de <span style="color: #F02C02;">básculas</span> en Querétaro</h1>
                         <h3 class="h1-short">Expertos en asegurar la precisión de tus básculas y balanzas</h3><br>
-                        <a class="btn-solid-lg" href="https://wa.me/524423601166" target="_blank">WhatsApp</a>
+                        <a class="btn-solid-lg" href="https://wa.me/524428712550" target="_blank" aria-label="Contactar a SERVICOM por WhatsApp">WhatsApp</a>
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
             </div> <!-- end of container -->
@@ -40,8 +39,8 @@ include __DIR__ . '/estructura/header.php';
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="h2-heading">Nuestros servicios de Básculas Industriales</h2>
-                    <p class="p-heading">Ofrecemos una gama completa de servicios de básculas industriales en México. Desde reparación y calibración hasta la venta de equipos de alta calidad, somos tu proveedor confiable en la industria. Garantizamos precisión y eficiencia en cada pesada. ¡Optimiza tus operaciones con nuestros servicios especializados!</p>
+                    <h2 class="h2-heading">Servicios para básculas y sistemas de pesaje</h2>
+                    <p class="p-heading">En SERVICOM brindamos reparación, mantenimiento, calibración, venta y renta de básculas industriales, de plataforma y camioneras en Querétaro y el Bajío. Atendemos empresas, almacenes, producción, mantenimiento y calidad mediante servicios programados en sitio.</p>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
@@ -105,7 +104,7 @@ include __DIR__ . '/estructura/header.php';
                         
                         <!-- Text Container -->
                         <div class="text-container">
-                            <h2>Optimiza tus Procesos Industriales con Nosotros </h2>
+                            <h2>Soluciones de pesaje para procesos industriales</h2>
                             <p>En <strong>SERVICOM Básculas Digitales</strong>, entendemos la importancia de la precisión y la calidad en la industria. Es por eso que ofrecemos servicios especializados en instrumentos de medición sistemas de pesaje que pueden impulsar tu productividad a nuevos niveles.</p>
                             <p>Nuestro compromiso es brindarte resultados excepcionales y satisfacer tus necesidades específicas. Ya sea que operes en la industria manufacturera, la automotriz, la farmacéutica o cualquier otro sector, nuestros servicios de medición están diseñados para adaptarse a tus requerimientos exactos.</p>
                             <!-- <p><strong>EXPERIENCE -</strong> insipidity especially discovered me of decisively in surrounded. Points six way enough she its</p>
@@ -175,8 +174,8 @@ include __DIR__ . '/estructura/header.php';
     
 
     <!-- Back To Top Button -->
-    <button onclick="topFunction()" id="myBtn">
-        <img src="images/up-arrow.png" alt="alternative">
+    <button onclick="topFunction()" id="myBtn" aria-label="Volver al inicio">
+        <img src="images/up-arrow.png" alt="">
     </button>
     <!-- end of back to top button -->
     	

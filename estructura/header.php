@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es"/>
+<html lang="es-MX">
 <head>
 
     <!-- Google tag (gtag.js) -->
@@ -16,12 +16,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     
     <!-- SEO Meta Tags -->
-    <meta name="language" content="spanish"/>
-    <meta name="description" content="Descubre nuestros servicios de reparación, calibración, verificación y venta de básculas en Querétaro. Somos tu proveedor confiable en la industria, ofreciendo soluciones precisas y eficientes para mantener tus básculas en óptimas condiciones. ¡Contáctanos hoy para optimizar tu operación y garantizar la precisión en cada pesada!"/>
-    <meta name="author" content="Servicom Basculas Digitales"/>
-    <meta name="keywords" content="Básculas Querétaro, Reparación de básculas en Querétaro, Básculas digitales en Querétaro, Básculas industriales en Querétaro, Calibración de básculas en Querétaro, Básculas grameras"/>
-    <meta name="robots" content="index, all, follow">
+    <meta name="language" content="Spanish">
+    <meta name="description" content="Reparación, mantenimiento, calibración, venta y renta de básculas en Querétaro y el Bajío. Contacta a SERVICOM por llamada o WhatsApp.">
+    <meta name="author" content="SERVICOM Básculas Digitales">
+    <meta name="robots" content="index, follow">
     <meta name="google-site-verification" content="qzYyxEW184o53C04exFPejsJZmiykHRvIE07tNQHIsA" />
+    <link rel="canonical" href="https://servicombasculas.com.mx/">
 
 
     <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
@@ -34,7 +34,64 @@
 	<!-- <meta name="twitter:card" content="summary_large_image"> to have large image post format in Twitter -->
 
     <!-- Webpage Title -->
-    <title>Básculas Digitales Querétaro | SERVICOM </title>
+    <title>Básculas en Querétaro: reparación y calibración | SERVICOM</title>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "LocalBusiness",
+                "@id": "https://servicombasculas.com.mx/#business",
+                "name": "SERVICOM Básculas Digitales",
+                "description": "Servicios de precisión a sistemas de pesaje",
+                "url": "https://servicombasculas.com.mx/",
+                "telephone": "+524428712550",
+                "email": "contacto@servicombasculas.com.mx",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Cerro El Gavilán 302-12",
+                    "addressLocality": "Santiago de Querétaro",
+                    "addressRegion": "Querétaro",
+                    "postalCode": "76116",
+                    "addressCountry": "MX"
+                },
+                "openingHoursSpecification": [
+                    {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": [
+                            "https://schema.org/Monday",
+                            "https://schema.org/Tuesday",
+                            "https://schema.org/Wednesday",
+                            "https://schema.org/Thursday",
+                            "https://schema.org/Friday"
+                        ],
+                        "opens": "08:00",
+                        "closes": "18:00"
+                    },
+                    {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": "https://schema.org/Saturday",
+                        "opens": "08:00",
+                        "closes": "14:00"
+                    }
+                ],
+                "sameAs": [
+                    "https://www.facebook.com/profile.php?id=61556104072028&locale=es_LA"
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://servicombasculas.com.mx/#website",
+                "url": "https://servicombasculas.com.mx/",
+                "name": "SERVICOM Básculas Digitales",
+                "publisher": {
+                    "@id": "https://servicombasculas.com.mx/#business"
+                }
+            }
+        ]
+    }
+    </script>
     
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
