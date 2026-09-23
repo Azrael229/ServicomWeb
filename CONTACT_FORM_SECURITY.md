@@ -2,11 +2,20 @@
 
 ## Alcance
 
-La protección combina Turnstile, CSRF, honeypot, tiempo mínimo, límites de frecuencia, validación del lado del servidor, límites de longitud, escape de HTML y envío SMTP seguro.
+El formulario utiliza una protección local y minimalista implementada únicamente
+con PHP. Cloudflare Turnstile fue retirado por completo: no hay widget, script,
+claves, validación Siteverify ni dependencia de cuentas o APIs antispam.
 
-## Configuración privada
+Se conservan CSRF, validación del lado del servidor, límites de longitud,
+protección CRLF, rechazo de campos inesperados, escape de HTML, remitente seguro,
+`Reply-To`, mensajes públicos genéricos, registros técnicos y el patrón
+POST/Redirect/GET.
 
-Los secretos se leen desde variables de entorno o desde `config.local.php`. Para una instalación manual, copie `config.example.php` como `config.local.php` y reemplace todos los valores ficticios. Nunca confirme `config.local.php` en Git.
+## Configuración privada del correo
+
+Los secretos SMTP se leen desde variables de entorno o desde `config.local.php`.
+Copie `config.example.php` como `config.local.php`, reemplace los valores
+ficticios y nunca confirme ese archivo en Git.
 
 Variables admitidas:
 
@@ -20,52 +29,126 @@ Variables admitidas:
 - `MAIL_FROM`
 - `MAIL_FROM_NAME`
 - `MAIL_RECIPIENT`
-- `TURNSTILE_SITE_KEY`
-- `TURNSTILE_SECRET_KEY`
-- `CONTACT_MIN_FILL_SECONDS`
-- `CONTACT_SESSION_MAX_ATTEMPTS`
-- `CONTACT_SESSION_WINDOW_SECONDS`
-- `CONTACT_IP_MAX_ATTEMPTS`
-- `CONTACT_IP_WINDOW_SECONDS`
-- `CONTACT_RATE_LIMIT_KEY`
-- `CONTACT_RATE_LIMIT_DIR`
-- `TRUST_CLOUDFLARE_IP_HEADER`
 
-## Valores predeterminados de protección
+`MAIL_FROM` debe pertenecer a `servicombasculas.com.mx`. El correo del
+visitante se utiliza únicamente como `Reply-To`. Para pruebas locales,
+`MAIL_DRY_RUN=true` evita cualquier conexión SMTP.
 
-- Tiempo mínimo de llenado: 3 segundos.
-- Límite por sesión: 4 intentos en 10 minutos.
-- Límite por IP: 12 intentos en 15 minutos.
-- Almacenamiento por IP: archivos JSON con bloqueo exclusivo en el directorio temporal del servidor.
-- Las IP se transforman a un hash; se recomienda configurar `CONTACT_RATE_LIMIT_KEY` con un valor aleatorio privado.
+## Configuración del filtro
 
-El límite por archivos funciona en un solo servidor. Si el sitio se distribuye en varios servidores, deberá sustituirse por un almacén compartido. `TRUST_CLOUDFLARE_IP_HEADER` debe activarse únicamente cuando el origen acepte tráfico exclusivamente a través de Cloudflare.
+Las reglas editables están centralizadas en
+`estructura/contact_spam_config.php`. El archivo no contiene secretos.
 
-## Turnstile
+### Dominios y terminaciones
 
-Cree un widget administrado para `servicombasculas.com.mx`. La clave pública se asigna a `TURNSTILE_SITE_KEY`; la clave secreta se asigna a `TURNSTILE_SECRET_KEY`. La validación del token en el servidor es obligatoria y falla de forma segura si la configuración o el servicio no están disponibles.
+- Para agregar un dominio, añádalo en `blocked_domains` sin `@`.
+- Para agregar una terminación, añádala en `blocked_tlds` sin el punto inicial.
+- Las comparaciones son exactas por etiquetas de dominio y también cubren
+  subdominios. No se usan coincidencias parciales.
+- Todo dominio terminado en `.ru` está bloqueado.
 
-Para pruebas locales pueden usarse únicamente las claves de prueba oficiales de Cloudflare. Nunca utilice esas claves en producción.
+### Honeypot
 
-Referencias oficiales:
+`company_website` es un campo de texto real colocado fuera de la vista mediante
+CSS, fuera del orden de tabulación, con autocompletado desactivado y oculto a
+lectores de pantalla. Sólo PHP lo valida. Si contiene cualquier valor, el correo
+no se envía, el bloqueo se registra y el visitante recibe un éxito aparente para
+no revelar la defensa al bot.
 
-- Pruebas: https://developers.cloudflare.com/turnstile/troubleshooting/testing/
-- Validación en servidor: https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
+### Idioma y alfabetos
 
-## Correo
+Los alfabetos cirílico, árabe, hebreo, Han, Hiragana, Katakana y Hangul se
+detectan con propiedades Unicode de PCRE. El arranque del formulario comprueba
+que la instalación PHP soporte esas propiedades.
 
-`MAIL_FROM` debe ser una cuenta autorizada de `servicombasculas.com.mx`. El correo del visitante se usa únicamente como `Reply-To`. Active `MAIL_DRY_RUN=true` durante pruebas locales para impedir cualquier conexión SMTP.
+Los idiomas escritos con alfabeto latino se estiman de forma heurística:
 
-## Publicación posterior
+1. Se normalizan mayúsculas y acentos.
+2. Se excluyen términos técnicos autorizados.
+3. Se comparan señales frecuentes del español contra señales de otros idiomas.
+4. Sólo se bloquea si existen varias señales extranjeras y superan claramente a
+   las españolas.
 
-1. Conservar un respaldo de los archivos actuales del hosting.
-2. Crear el widget Turnstile y restringirlo al dominio de producción.
-3. Configurar variables de entorno o un `config.local.php` privado en el servidor.
-4. Mantener `MAIL_DRY_RUN=true` durante una comprobación inicial sin correo.
-5. Verificar el formulario en móvil y escritorio.
-6. Cambiar `MAIL_DRY_RUN=false` únicamente para la prueba final autorizada.
-7. Confirmar recepción, remitente y Reply-To.
-8. Revisar los registros del servidor sin exponerlos públicamente.
-9. Si falla, restaurar los archivos respaldados y la configuración privada anterior.
+La heurística no sustituye un análisis lingüístico completo. Para autorizar un
+término técnico, agréguelo en `allowed_technical_words`. Las marcas, modelos y
+abreviaturas no se analizan rígidamente. Las frases extranjeras cortas evidentes
+se administran en `short_foreign_phrases`.
 
-La contraseña SMTP que anteriormente aparecía en `config.php` debe rotarse, porque permanece en el historial de Git. Este cambio no reescribe el historial.
+Para agregar una frase recurrente de spam, incorpórela en `blocked_phrases`.
+
+### Enlaces
+
+Se permiten hasta dos enlaces. Se cuentan:
+
+- Direcciones que comienzan con `http://` o `https://`.
+- Direcciones que comienzan con `www.`.
+- Dominios visibles con terminaciones web comunes.
+
+Antes del conteo se eliminan direcciones de correo. La expresión exige etiquetas
+de dominio válidas y una terminación web conocida, por lo que números telefónicos
+y modelos como `IND.560-A` o `XK-200.5` no se consideran enlaces.
+
+### Repetición
+
+Los umbrales configurables detectan:
+
+- Un mismo carácter repetido excesivamente.
+- Una palabra consecutiva más veces de lo permitido.
+- Una secuencia de varias palabras repetida consecutivamente.
+- Bloques largos idénticos duplicados.
+
+La revisión se limita al mensaje actual; no existe almacenamiento histórico.
+Repeticiones naturales de términos como báscula, calibración o reparación no se
+bloquean por sí solas.
+
+## Registros
+
+Cada bloqueo genera una entrada `[SERVICOM contact block]` con:
+
+- Fecha y hora UTC.
+- Identificador aleatorio de solicitud.
+- Tipo de bloqueo.
+- Dominio, alfabeto, variante de repetición o cantidad de enlaces cuando aplica.
+
+No se registra el mensaje completo, nombre, teléfono, credenciales ni secretos.
+Los registros deben permanecer fuera del directorio público.
+
+## Mensajes públicos
+
+Los bloqueos por dominio, idioma, enlaces, frases o repetición muestran:
+
+> No fue posible procesar el mensaje. Puede comunicarse por llamada o WhatsApp al 442 871 2550.
+
+El honeypot muestra un éxito aparente. Los errores de validación o correo utilizan
+un mensaje genérico y nunca exponen detalles técnicos.
+
+## Pruebas
+
+Desde la raíz del repositorio:
+
+```powershell
+C:\xampp\php\php.exe tests\contact_form_security_test.php
+```
+
+Las pruebas no cargan PHPMailer y utilizan `MAIL_DRY_RUN=true`. Para una prueba
+funcional local, configure credenciales ficticias válidas y mantenga ese modo
+activo. No utilice una cuenta SMTP real.
+
+## Riesgos de falsos positivos
+
+La detección de idioma es deliberadamente conservadora. Una frase latina muy
+corta o ambigua puede no bloquearse; esto reduce el riesgo para empresas
+mexicanas que usan marcas, modelos o vocabulario técnico extranjero. Antes de
+endurecer listas o umbrales, agregue casos legítimos y abusivos a las pruebas.
+
+## Publicación y reversión
+
+1. Respaldar los archivos y la configuración privada del hosting.
+2. Configurar `config.local.php` o variables de entorno.
+3. Probar con `MAIL_DRY_RUN=true` en móvil y escritorio.
+4. Revisar registros sin exponerlos públicamente.
+5. Autorizar por separado una prueba SMTP real.
+6. Si falla, restaurar el respaldo o el commit anterior y su configuración.
+
+La contraseña SMTP que apareció históricamente en `config.php` debe rotarse.
+Este cambio no reescribe el historial.

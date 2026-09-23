@@ -8,6 +8,15 @@ if (!defined('SERVICOM_APP_BOOTSTRAPPED')) {
 
 $escapeContact = static fn($value): string => htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 ?>
+<style>
+    .contact-control {
+        position: absolute !important;
+        left: -10000px !important;
+        width: 1px !important;
+        height: 1px !important;
+        overflow: hidden !important;
+    }
+</style>
 <!-- Contact -->
 <div id="contact" class="form-1">
     <div class="container">
@@ -50,9 +59,9 @@ $escapeContact = static fn($value): string => htmlspecialchars((string) $value, 
             <div class="col-lg-10 offset-lg-1">
                 <form method="POST" action="#contact" accept-charset="UTF-8">
                     <input type="hidden" name="csrf_token" value="<?php echo $escapeContact($contactCsrf); ?>">
-                    <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
-                        <label for="contact-website">No completar este campo</label>
-                        <input id="contact-website" type="text" name="website" value="" tabindex="-1" autocomplete="off">
+                    <div class="contact-control" aria-hidden="true">
+                        <label for="company-website">No completar este campo</label>
+                        <input id="company-website" type="text" name="company_website" value="" tabindex="-1" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label class="visually-hidden" for="contact-nombre">Nombre</label>
@@ -68,13 +77,8 @@ $escapeContact = static fn($value): string => htmlspecialchars((string) $value, 
                     </div>
                     <div class="form-group">
                         <label class="visually-hidden" for="contact-mensaje">Mensaje</label>
-                        <textarea id="contact-mensaje" class="form-control-textarea" placeholder="Mensaje" required minlength="10" maxlength="4000" name="mensaje"><?php echo $escapeContact($contactOld['mensaje'] ?? ''); ?></textarea>
+                        <textarea id="contact-mensaje" class="form-control-textarea" placeholder="Mensaje" required minlength="3" maxlength="4000" name="mensaje"><?php echo $escapeContact($contactOld['mensaje'] ?? ''); ?></textarea>
                     </div>
-                    <?php if ($contactConfigurationReady) { ?>
-                        <div class="form-group">
-                            <div class="cf-turnstile" data-sitekey="<?php echo $escapeContact($contactTurnstileSiteKey); ?>" data-theme="auto"></div>
-                        </div>
-                    <?php } ?>
                     <div class="form-group">
                         <button type="submit" name="submit" class="form-control-submit-button"<?php echo $contactConfigurationReady ? '' : ' disabled'; ?>>Enviar</button>
                     </div>
@@ -83,7 +87,4 @@ $escapeContact = static fn($value): string => htmlspecialchars((string) $value, 
         </div>
     </div>
 </div>
-<?php if ($contactConfigurationReady) { ?>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<?php } ?>
 <!-- end of contact -->

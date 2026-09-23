@@ -16,13 +16,4 @@ return [
     'mail_from' => 'formulario@example.invalid',
     'mail_from_name' => 'SERVICOM Básculas Digitales',
     'mail_recipient' => 'destinatario@example.invalid',
-    'turnstile_site_key' => 'CLAVE_PUBLICA_TURNSTILE',
-    'turnstile_secret_key' => 'CLAVE_SECRETA_TURNSTILE',
-    'contact_min_fill_seconds' => 3,
-    'contact_session_max_attempts' => 4,
-    'contact_session_window_seconds' => 600,
-    'contact_ip_max_attempts' => 12,
-    'contact_ip_window_seconds' => 900,
-    'contact_rate_limit_key' => 'GENERAR_VALOR_ALEATORIO_PRIVADO',
-    'trust_cloudflare_ip_header' => false,
 ];

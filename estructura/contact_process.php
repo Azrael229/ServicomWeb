@@ -12,9 +12,11 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 define('SERVICOM_APP_BOOTSTRAPPED', true);
 $contactConfig = require __DIR__ . '/../config.php';
+$contactSpamConfig = require __DIR__ . '/contact_spam_config.php';
 require_once __DIR__ . '/contact_security.php';
 
-$contactConfigurationReady = servicom_contact_configuration_ready($contactConfig);
+$contactConfigurationReady = servicom_contact_configuration_ready($contactConfig)
+    && servicom_contact_spam_config_valid($contactSpamConfig);
 $contactFlash = $_SESSION['contact_flash'] ?? null;
 unset($_SESSION['contact_flash']);
 $contactOld = $_SESSION['contact_old'] ?? [];
@@ -23,21 +25,29 @@ unset($_SESSION['contact_old']);
 if (empty($_SESSION['contact_csrf'])) {
     $_SESSION['contact_csrf'] = bin2hex(random_bytes(32));
 }
-if (empty($_SESSION['contact_form_started_at'])) {
-    $_SESSION['contact_form_started_at'] = time();
-}
 
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
-    $ip = servicom_contact_client_ip($_SERVER, $contactConfig);
-    $rateAllowed = servicom_contact_rate_limit($_SESSION, $ip, $contactConfig);
-    $result = $rateAllowed
-        ? servicom_contact_validate_submission($_POST, $_SERVER, $_SESSION, $contactConfig)
-        : ['ok' => false, 'code' => 'rate-limit'];
-
+    $result = servicom_contact_validate_submission(
+        $_POST,
+        $_SERVER,
+        $_SESSION,
+        $contactConfig,
+        $contactSpamConfig
+    );
     $success = false;
+    $publicSpamBlock = false;
+
     if (!$contactConfigurationReady) {
         error_log('[SERVICOM contact] Configuración incompleta; envío rechazado de forma segura.');
         $result = ['ok' => false, 'code' => 'configuration'];
+    } elseif (!empty($result['blocked'])) {
+        servicom_contact_log_block((array) ($result['spam_result'] ?? ['type' => 'unknown']));
+        if (!empty($result['silent'])) {
+            // Éxito aparente: no informa al bot y nunca ejecuta PHPMailer.
+            $success = true;
+        } else {
+            $publicSpamBlock = true;
+        }
     } elseif (!empty($result['ok'])) {
         $message = servicom_contact_build_message($result['data'], $contactConfig);
         if (!empty($contactConfig['mail_dry_run'])) {
@@ -78,6 +88,17 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
             'message' => 'Gracias por comunicarte. Tu mensaje fue recibido correctamente.',
         ];
         $_SESSION['contact_old'] = [];
+    } elseif ($publicSpamBlock) {
+        $_SESSION['contact_flash'] = [
+            'type' => 'danger',
+            'message' => 'No fue posible procesar el mensaje. Puede comunicarse por llamada o WhatsApp al 442 871 2550.',
+        ];
+        $_SESSION['contact_old'] = [
+            'nombre' => servicom_contact_value($_POST['nombre'] ?? ''),
+            'telefono' => servicom_contact_value($_POST['telefono'] ?? ''),
+            'email' => servicom_contact_value($_POST['email'] ?? ''),
+            'mensaje' => servicom_contact_value($_POST['mensaje'] ?? ''),
+        ];
     } else {
         $_SESSION['contact_flash'] = [
             'type' => 'danger',
@@ -92,10 +113,8 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
     }
 
     $_SESSION['contact_csrf'] = bin2hex(random_bytes(32));
-    $_SESSION['contact_form_started_at'] = time();
     header('Location: index.php#contact', true, 303);
     exit;
 }
 
 $contactCsrf = (string) $_SESSION['contact_csrf'];
-$contactTurnstileSiteKey = (string) ($contactConfig['turnstile_site_key'] ?? '');
